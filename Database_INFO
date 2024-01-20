@@ -1,0 +1,50 @@
+MariaDB [(none)]> USE A_course_registration_program;
+Database changed
+MariaDB [A_course_registration_program]> SHOW TABLES;
++-----------------------------------------+
+| Tables_in_a_course_registration_program |
++-----------------------------------------+
+| admin_table                             |
+| course_table                            |
+| enroll_table                            |
+| student_table                           |
++-----------------------------------------+
+
+MariaDB [A_course_registration_program]> DESC A_course_registration_program.admin_table;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |   CREATE TABLE admin_table (
++--------------+-------------+------+-----+---------+-------+       professor_id VARCHAR(20) NOT NULL PRIMARY KEY,
+| professor_id | varchar(20) | NO   | PRI | NULL    |       |       username VARCHAR(50),
+| username     | varchar(50) | YES  |     | NULL    |       |       password VARCHAR(50),
+| password     | varchar(50) | YES  |     | NULL    |       |       department VARCHAR(50)
+| department   | varchar(50) | YES  |     | NULL    |       |   );
++--------------+-------------+------+-----+---------+-------+
+
+MariaDB [A_course_registration_program]> DESC A_course_registration_program.course_table;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |   CREATE TABLE course_table (
++------------------+-------------+------+-----+---------+-------+       course_id VARCHAR(20) NOT NULL PRIMARY KEY,
+| course_id        | varchar(20) | NO   | PRI | NULL    |       |       course_name VARCHAR(50),
+| course_name      | varchar(50) | YES  |     | NULL    |       |       credit INT,
+| credit           | int(11)     | YES  |     | NULL    |       |       enrollment_limit INT
+| enrollment_limit | int(11)     | YES  |     | NULL    |       |   );
++------------------+-------------+------+-----+---------+-------+
+
+MariaDB [A_course_registration_program]> DESC A_course_registration_program.enroll_table;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |   CREATE TABLE enroll_table (
++------------+-------------+------+-----+---------+-------+       student_id VARCHAR(20) NOT NULL,
+| student_id | varchar(20) | NO   | PRI | NULL    |       |       course_id VARCHAR(20) NOT NULL,
+| course_id  | varchar(20) | NO   | PRI | NULL    |       |       PRIMARY KEY (student_id, course_id)
++------------+-------------+------+-----+---------+-------+   );
+
+MariaDB [A_course_registration_program]> DESC A_course_registration_program.student_table;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |   CREATE TABLE student_table (
++------------+-------------+------+-----+---------+-------+       student_id VARCHAR(20) NOT NULL PRIMARY KEY,
+| student_id | varchar(20) | NO   | PRI | NULL    |       |       username VARCHAR(50) NOT NULL,
+| username   | varchar(50) | NO   |     | NULL    |       |       password VARCHAR(50) NOT NULL,
+| password   | varchar(50) | NO   |     | NULL    |       |       department VARCHAR(50) NOT NULL
+| department | varchar(50) | NO   |     | NULL    |       |   );
++------------+-------------+------+-----+---------+-------+
+  
