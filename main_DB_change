@@ -1,0 +1,22 @@
+원래 main.cpp의 부분
+    // DB 설정
+    struct DB_Connection {
+        const char* server = "localhost",
+            * user = "root",
+            * pw = "dkstpwns1!",
+            * db = "A_course_registration_program";
+        unsigned int port = 3307;  // 포트 변경
+    } DBCon;
+
+수정된 main_DB_change.cpp의 부분
+    // DB 설정
+    struct DB_Connection {
+        const char* server = "외부 IP",
+            * user = "sejoon",
+            * pw = "dkstpwns1!",
+            * db = "A_course_registration_program";
+        unsigned int port = 33060;  // 포트 변경 (PC.A에서 포트포워딩)
+                                    // 33060	[VMware Ubuntu 에서 확인한 IP]	3306	BOTH	MY_SQL
+                                    // 외부 IP를 33060 포트로 접근하면 [VMware Ubuntu 에서 확인한 IP]에 3306포트로 접근 할 수 있다는 뜻.
+    } DBCon;
+  로 변경해주었다.
